@@ -8,8 +8,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dbbiblioteca',
-        'USER' : 'Brianmuv',
-        'PASSWORD' : 'Brianmuv2023',
+        'USER' : 'brianmuv',
+        'PASSWORD' : 'brianmuv2023',
         'HOST' : 'localhost',
         'PORT' : '5432'
     }
