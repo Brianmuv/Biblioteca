@@ -1,10 +1,40 @@
 from django.db import models 
 
+#
+from django.db.models import Q  #---> allows to use the syntax operator "or" 
 
 #The function belong to exclusively for one model , in this case for autor.add()
 
 class AutorManager(models.Manager):
     """ Managers for the model Autor """
     
-    def listar_autores(self):
-        return self.all()
+    def buscar_autor(self, kword):
+        
+        resultado = self.filter(
+            nombre__icontains = kword  #---> Return the coincidences based on the attibute typed on kword
+            )
+        
+        return resultado
+    
+    
+    # OR operator
+    
+    def buscar_autor2(self, kword):
+        
+        resultado = self.filter(
+             Q(nombre__icontains = kword) | Q(apellidos__icontains = kword)#---> Return the coincidences based on the attibute typed on kword
+        
+        )
+        
+        return resultado
+    
+    # exclude()
+    
+    def buscar_autor3(self, kword):
+        
+        resultado = self.filter(
+             nombre__icontains = kword  #---> Return the coincidences based on the attibute typed on kword
+        
+        ).exclude(edad = 58)
+        
+        return resultado
