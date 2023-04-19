@@ -38,3 +38,14 @@ class AutorManager(models.Manager):
         ).exclude(edad = 58)
         
         return resultado
+    
+    # Higher(gt) or lower(lt):
+    
+    def buscar_autor4(self, kword):
+        resultado = self.filter(
+                edad__gt = 40,  #---> Higher
+                edad__lt = 65   #---> lower    ---> Return ages between 40 or 65
+        ).order_by('apellidos')   #---> order based on lastname, we could add more attributes to order. 
+        return resultado
+    
+    

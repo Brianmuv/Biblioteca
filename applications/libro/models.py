@@ -8,6 +8,8 @@ from applications.autor.models import Autor
 
 # Create your models here.
 
+from .managers import LibroManager
+
 class Categoria(models.Model):
     nombre = models.CharField(max_length=30)
 
@@ -20,9 +22,10 @@ class Libro(models.Model):
     autores = models.ManyToManyField(Autor)
     titulo = models.CharField(max_length=50)
     fecha = models.DateField('Fecha de Lanzamiento')
-    portada = models.ImageField(upload_to='portada', height_field=None, width_field=None, max_length=None)
+    portada = models.ImageField(upload_to='portada', height_field=None, width_field=None, max_length=None, blank=True)
     visitas = models.PositiveIntegerField()
     
+    objects = LibroManager()
     def __str__(self):
         return self.titulo
     

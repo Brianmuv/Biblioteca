@@ -21,4 +21,4 @@ class ListAutores(ListView):
     def get_queryset(self):
         key_word = self.request.GET.get('kword', '')  #---> Intercep the GET method by keyword set on html "kword"
         
-        return Autor.objects.buscar_autor3(key_word)
+        return Autor.objects.buscar_autor4(key_word)
